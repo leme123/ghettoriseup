@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rising Up the Ghetto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #111;
+      color: #fff;
+    }
+    header {
+      background: url('background.jpg') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3em;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    header em {
+      font-size: 1.2em;
+      font-style: italic;
+      margin-top: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 200px;
+      background-color: #1e1e1e;
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .sidebar a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .sidebar a:hover {
+      color: #fff;
+    }
+    main {
+      margin-left: 220px;
+      padding: 20px;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+    .song {
+      background: #222;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .song img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .song-details {
+      flex-grow: 1;
+    }
+    .song-details h3,
+    .song-details p {
+      margin: 5px 0;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .actions button,
+    .actions a {
+      padding: 5px 10px;
+      background: #444;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .comments {
+      margin-top: 10px;
+    }
+    .comments textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+    }
+    .comments button {
+      margin-top: 5px;
+      padding: 5px 10px;
+      background: #666;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      background: #1e1e1e;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    .social-icons a:hover {
+      color: #fff;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="#">Search</a>
+    <a href="#">Explore</a>
+    <a href="#">Charts</a>
+    <a href="#">Artists</a>
+    <a href="#">Tracks</a>
+    <a href="#">Playlists</a>
+    <a href="#">Likes</a>
+    <a href="#">Login</a>
+    <a href="#">Signup</a>
+  </div>
+
+  <header>
+    <h1>Rising Up the Ghetto</h1>
+    <em>Home of sweet African music. You can listen and download hot dancehall, trap, hiphop, local, reggea and Afro  <br> from www.risinguptheghetto.com<br><strong>lemme bwai ghetto BOSS</Strong></em>
+  </header>
+
+  <main>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search songs or artists...">
+    </div>
+
+    <div class="song" id="song1">
+      <a href="#song1"><img src="yaro.jpg" alt="Yearoso Ndi Hero"></a>
+      <div class="song-details">
+        <h3>Yearoso Ndi Hero</h3>
+        <p>by Lemme Bwai</p>
+        <p>Genre: hip hop</p>
+        <audio controls src="yearoso ndi hero.mp3" onplay="trackPlay('song1')"></audio>
+        <div class="actions">
+          <button onclick="likeSong('song1')">Like (<span id="like-song1">0</span>)</button>
+          <a href="yearoso ndi hero.mp3" download>Download</a>
+          <button onclick="copyLink('song1')">Share</button>
+        </div>
+        <div class="comments">
+          <textarea placeholder="Leave a comment..."></textarea>
+          <button>Post Comment</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="song" id="song2">
+      <a href="#song2"><img src="judas art.jpg" alt="Judas"></a>
+      <div class="song-details">
+        <h3>Judas</h3>
+        <p>by Cevo265 X Doss Kaddah</p>
+        <p>Genre: dancehall</p>
+        <audio controls src="judas.mp3" onplay="trackPlay('song2')"></audio>
+        <div class="actions">
+          <button onclick="likeSong('song2')">Like (<span id="like-song2">0</span>)</button>
+          <a href="judas.mp3" download>Download</a>
+          <button onclick="copyLink('song2')">Share</button>
+        </div>
+        <div class="comments">
+          <textarea placeholder="Leave a comment..."></textarea>
+          <button>Post Comment</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="song" id="song3">
+      <a href="#song3"><img src="school.jpg" alt="School Dropout"></a>
+      <div class="song-details">
+        <h3>School Dropout</h3>
+        <p>by Widy P X Chispa Lanar</p>
+        <audio controls src="school drop out.mp3" onplay="trackPlay('song3')"></audio>
+        <div class="actions">
+          <button onclick="likeSong('song3')">Like (<span id="like-song3">0</span>)</button>
+          <a href="school drop out.mp3" download>Download</a>
+          <button onclick="copyLink('song3')">Share</button>
+        </div>
+        <div class="comments">
+          <textarea placeholder="Leave a comment..."></textarea>
+          <button>Post Comment</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <h2>For More Information & Promotion</h2>
+      <p>WhatsApp: +265990842635</p>
+      <p>Email: bandamalack968gmail.com</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>Designed by Lemme Bwai</p>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      document.querySelectorAll('.song').forEach(song => {
+        const text = song.innerText.toLowerCase();
+        song.style.display = text.includes(query) ? 'flex' : 'none';
+      });
+    });
+
+    function copyLink(id) {
+      const link = window.location.origin + window.location.pathname + '#' + id;
+      navigator.clipboard.writeText(link).then(() => {
+        alert('Link copied to clipboard: ' + link);
+      });
+    }
+
+    function likeSong(id) {
+      const key = 'likes-' + id;
+      let count = parseInt(localStorage.getItem(key)) || 0;
+      count++;
+      localStorage.setItem(key, count);
+      document.getElementById('like-' + id).textContent = count;
+    }
+
+    function trackPlay(id) {
+      const key = 'plays-' + id;
+      let count = parseInt(localStorage.getItem(key)) || 0;
+      count++;
+      localStorage.setItem(key, count);
+      console.log('Now playing ' + id + ', total plays: ' + count);
+    }
+
+    ['song1', 'song2', 'song3'].forEach(id => {
+      const count = parseInt(localStorage.getItem('likes-' + id)) || 0;
+      document.getElementById('like-' + id).textContent = count;
+    });
+  </script>
+</body>
+</html>
